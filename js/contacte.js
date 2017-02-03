@@ -19,7 +19,6 @@ for (var i=0; i<contacts.length; i++) {
    /*Afiseaza in consola */
    console.info(contacts[i]);
    contactsHTML += getContactsHTML(contacts[i]);
-
 };
 
 $('#agenda tbody').html(contactsHTML);
