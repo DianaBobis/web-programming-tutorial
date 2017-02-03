@@ -35,13 +35,23 @@ function getContactsHTML(contact) {
 };
 var contactsHTML='';
 
-var contacts = [
-    {firtsname:'Diana', lastname:'Bobis', phone : '111'},
-    {firtsname : 'Mihai', lastname :'Pop', phone : '2345'},
-    {firtsname : 'Andrei', lastname :'Mircea', phone : '543'}
-];
+var contacts = [];
+function showContacts(contacts) {
+    for (var i = 0; i < contacts.length; i++) {
+        console.info(contacts[i]);
+        contactsHTML += getContactsHTML(contacts[i]);
+    }
+    $('#agenda tbody').html(contactsHTML);
 
-for (var i=0; i<contacts.length; i++) {
-    console.info(contacts[i]);
-    contactsHTML += getContactsHTML(contacts[i]);
-};
+}
+
+// showContacts(contacts);
+
+$.ajax('servlets/contacts.json',{
+        success: function () {
+            console.info('contacts loaded', contacts);
+            showContacts(contacts)
+        }
+    }
+);
+
